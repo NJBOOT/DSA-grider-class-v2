@@ -5,20 +5,40 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
-function maxChar(s) {
-  let charMap = {};
+// function maxChar(s) {
+//   let charMap = {};
+//   let max = 0;
+//   let maxChar = "";
+//   for (let i = 0; i < s.length; i++) {
+//     charMap[s[i]] = charMap[s[i]] + 1 || 1;
+//   }
+//   for (let key in charMap) {
+//     if (charMap[key] > max) {
+//       max = charMap[key];
+//       maxChar = key;
+//     }
+//   }
+//   return maxChar;
+// }
+
+function maxChar(str) {
+  const hashMap = {};
   let max = 0;
-  let maxChar = "";
-  for (let i = 0; i < s.length; i++) {
-    charMap[s[i]] = charMap[s[i]] + 1 || 1;
+  let key = "";
+  for (let char of str) {
+    hashMap[char] = hashMap[char] + 1 || 1;
   }
-  for (let key in charMap) {
-    if (charMap[key] > max) {
-      max = charMap[key];
-      maxChar = key;
-    }
+  // for (let char in hashMap) {
+  //   if (hashMap[char] > max) {
+  //     max = hashMap[char];
+  //     key = char;
+  //   }
+  // }
+  // return key;
+  for (let char in hashMap) {
+    max = Math.max(hashMap[char], max);
   }
-  return maxChar;
+  return Object.keys(hashMap).find(el => hashMap[el] === max);
 }
 
 module.exports = maxChar;
