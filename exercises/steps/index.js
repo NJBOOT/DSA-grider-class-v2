@@ -17,28 +17,17 @@
 //       '### '
 //       '####'
 
-function steps(n) {
+const steps = n => {
   for (let i = 1; i <= n; i++) {
-    let stair = "#".repeat(i) + " ".repeat(n - i);
-    console.log(stair);
+    console.log("#".repeat(i) + " ".repeat(n - i));
   }
-}
+};
 
-function recurseSteps(n, row = 0, stair = "") {
-  if (n === row) {
-    return;
-  }
-  if (stair.length === n) {
-    console.log(stair);
-    return recurseSteps(n, row + 1);
-  }
-  if (stair.length <= row) {
-    stair += "#";
-  } else {
-    stair += " ";
-  }
-  recurseSteps(n, row, stair);
-}
+const recursiveSteps = (n, step = 1) => {
+  if (step === n + 1) return;
+  console.log("#".repeat(step) + " ".repeat(n - step));
+  return recursiveSteps(n, step + 1);
+};
 
 module.exports = steps;
 
@@ -71,3 +60,26 @@ module.exports = steps;
 //       console.log(stairs);
 //     }
 //   }
+
+// function steps(n) {
+//   for (let i = 1; i <= n; i++) {
+//     let stair = "#".repeat(i) + " ".repeat(n - i);
+//     console.log(stair);
+//   }
+// }
+
+// function recurseSteps(n, row = 0, stair = "") {
+//   if (n === row) {
+//     return;
+//   }
+//   if (stair.length === n) {
+//     console.log(stair);
+//     return recurseSteps(n, row + 1);
+//   }
+//   if (stair.length <= row) {
+//     stair += "#";
+//   } else {
+//     stair += " ";
+//   }
+//   recurseSteps(n, row, stair);
+// }
