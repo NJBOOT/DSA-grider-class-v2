@@ -19,19 +19,30 @@
 //   return chunked
 // }
 
-function chunk(array, size) {
+// function chunk(array, size) {
+//   let chunked = [];
+//   for (let i = 0; i < array.length; i++) {
+//     let last = chunked[chunked.length - 1];
+//     if (!last || last.length === size) {
+//       chunked.push([array[i]]);
+//       console.log(chunked, [array[i]]);
+//     } else {
+//       last.push(array[i]);
+//     }
+//   }
+//   return chunked;
+// }
+
+const chunk = (array, size) => {
   let chunked = [];
-  for (let i = 0; i < array.length; i++) {
-    let last = chunked[chunked.length - 1];
-    if (!last || last.length === size) {
-      chunked.push([array[i]]);
-      console.log(chunked, [array[i]]);
-    } else {
-      last.push(array[i]);
-    }
+  let idx = 0;
+  while (array.length > idx) {
+    let single = array.slice(idx, idx + size);
+    chunked.push(single);
+    idx += size;
   }
   return chunked;
-}
+};
 
 module.exports = chunk;
 
